@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg"></div>
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">☀️</span>
+      <h1>Weather Dashboard</h1>
+    </div>
+    <div class="search">
+      <input id="cityInput" type="text" placeholder="Search city... (e.g., Gwalior)"/>
+      <button id="searchBtn">Search</button>
+      <button id="geoBtn">📍</button>
+      <div class="units">
+        <button data-unit="c" class="unit active">°C</button>
+        <button data-unit="f" class="unit">°F</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid">
+    <!-- Current weather -->
+    <section class="panel hero">
+      <div class="hero-main">
+        <div>
+          <h2 id="cityName">—</h2>
+          <p id="localTime">—</p>
+        </div>
+        <div class="temp-block">
+          <div class="temp" id="temperature">—°</div>
+          <div class="cond">
+            <span id="condition">—</span>
+            <small id="hiLo">—</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Converted to blocky design -->
+      <div class="hero-meta">
+        <div class="detail"><span>Feels like</span><b id="feelsLike">—</b></div>
+        <div class="detail"><span>Humidity</span><b id="humidity">—</b></div>
+        <div class="detail"><span>Wind</span><b id="wind">—</b></div>
+        <div class="detail"><span>Pressure</span><b id="pressure">—</b></div>
+      </div>
+    </section>
+
+    <!-- AI summary -->
+    <section class="panel ai">
+      <div class="panel-head">
+        <h3>AI Weather Brief</h3>
+        <button id="aiRefresh" class="ghost">↻</button>
+      </div>
+      <div id="aiOutput" class="ai-text">Type a city to get AI summary.</div>
+    </section>
+
+    <!-- Details -->
+    <section class="panel details">
+      <div class="detail"><span>Sunrise</span><b id="sunrise">—</b></div>
+      <div class="detail"><span>Sunset</span><b id="sunset">—</b></div>
+      <div class="detail"><span>Precipitation</span><b id="precip">—</b></div>
+      <div class="detail"><span>Wind Dir</span><b id="windDir">—</b></div>
+      <div class="detail"><span>UV Index</span><b id="uv">—</b></div>
+      <div class="detail"><span>Visibility</span><b id="visibility">—</b></div>
+    </section>
+
+    <!-- Forecast -->
+    <section class="panel forecast">
+      <div class="panel-head"><h3>5-Day Forecast</h3></div>
+      <div id="forecastRow" class="forecast-row"></div>
+    </section>
+
+    <!-- Gradient Decorative Panel -->
+<div class="gradient-box">
+  <h1 class="gradient-heading">
+            “Weather Reimagined”
+  </h1>
+</div>
+
+
+
+    <!-- Extra Insights -->
+    <section class="panel extra">
+      <div class="panel-head"><h3>Extra Insights</h3></div>
+      <p>Here you can add air quality index, pollen forecast, or travel tips based on weather.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <small>Data: Open-Meta • AI: Gemini API • Built By Nakul</small>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

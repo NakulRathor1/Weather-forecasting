@@ -1,0 +1,190 @@
+:root {
+  --bg: linear-gradient(135deg,#f0f9ff,#e0f2fe,#fef9c3);
+  --card: rgba(255,255,255,0.65);
+  --border: rgba(255,255,255,0.25);
+  --text: #1e293b;
+  --muted: #475569;
+  --accent: #38bdf8;
+  --accent2: #a78bfa;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body {
+  font-family:"Poppins",sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height:1.5;
+  min-height: 100vh;
+  overflow-y: scroll;
+}
+
+/* Header */
+.topbar {
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 24px;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,0.6);
+  border-bottom:1px solid var(--border);
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand h1{font-size:20px}
+.search{display:flex;align-items:center;gap:8px}
+.search input {
+  padding:8px 12px;border-radius:10px;
+  border:1px solid var(--border);background:var(--card);color:var(--text);
+}
+.search button {
+  padding:8px 12px;border:none;border-radius:10px;cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;font-weight:600;
+}
+.units{display:flex;gap:4px;background:var(--card);padding:4px;border-radius:10px}
+.unit{background:transparent;border:none;color:var(--text);padding:6px 10px;cursor:pointer}
+.unit.active{background:var(--accent2);color:#fff;border-radius:6px}
+
+/* Layout */
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-areas:
+    "hero ai"
+    "details details"
+    "forecast gradient"
+    "extra extra";
+  padding: 20px;
+}
+
+.panel {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.1);
+}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.panel h3{margin:0;font-size:18px}
+
+/* Hero */
+.hero {
+  grid-area: hero;
+  background: linear-gradient(135deg,#38bdf8,#6366f1,#ec4899);
+  color:#fff;
+}
+.hero-main{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.hero .temp{font-size:3rem;font-weight:700}
+.hero-meta {
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+  gap:12px;
+}
+.hero-meta .detail {
+  background: rgba(255,255,255,0.25);
+  padding:10px;
+  border-radius:12px;
+  text-align:center;
+  color:#fff;
+}
+.hero-meta span{font-size:12px;display:block;color:#e2e8f0}
+
+/* AI */
+.ai{grid-area:ai}
+.ai-text{min-height:100px;color:#1e293b}
+
+/* Details */
+.details{grid-area:details;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.detail{background:rgba(255,255,255,0.6);padding:12px;border-radius:12px;text-align:center}
+.detail span{color:var(--muted);font-size:13px;display:block;margin-bottom:4px}
+
+/* Forecast Cards */
+.forecast-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+.forecast-row .card {
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+.forecast-row .card:nth-child(2) { background: linear-gradient(135deg, #f472b6, #ec4899); }
+.forecast-row .card:nth-child(3) { background: linear-gradient(135deg, #34d399, #10b981); }
+.forecast-row .card:nth-child(4) { background: linear-gradient(135deg, #facc15, #f59e0b); color:#1f2937; }
+.forecast-row .card:nth-child(5) { background: linear-gradient(135deg, #a78bfa, #6366f1); }
+.forecast-row .card:hover { transform: translateY(-4px) scale(1.03); }
+
+/* Extra */
+.extra{grid-area:extra}
+
+/* Footer */
+.foot{text-align:center;padding:20px;color:var(--muted)}
+
+/* Background */
+.bg{position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(circle at 20% 30%,#38bdf822 0%,transparent 60%),
+             radial-gradient(circle at 80% 70%,#a78bfa22 0%,transparent 60%);
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;grid-template-areas:"hero""ai""details""forecast""extra"}
+}
+/* Gradient Box for empty space */
+.gradient-box {
+  grid-area: gradient;
+  min-height: 200px;
+  border-radius: 16px;
+  background: linear-gradient(-45deg, #38bdf855, #6366f155, #ec489955, #a78bfa55);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.gradient-box {
+  position: relative;
+  width: 100%;
+  height: 300px; /* adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.gradient-heading {
+  font-family: 'Poppins', sans-serif; /* modern geometric font */
+  font-weight: 900; /* extra bold */
+  font-size: 3.5rem; /* adjust for effect */
+  line-height: 1.2;
+  color: #000; /* black for contrast */
+  letter-spacing: 2px; /* modern spacing */
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(255,255,255,0.3); /* subtle glow */
+}
+
+@media (max-width: 768px) {
+  .gradient-heading {
+    font-size: 2rem;
+  }
+}
